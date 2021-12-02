@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { CriarJogadorDto } from './dto/criar-jogador.dto';
 import { Jogador } from './interface/jogador.interface';
 import { JogadoresService } from './jogadores.service';
@@ -13,7 +13,13 @@ export class JogadoresController {
   }
 
   @Get()
-  async consultarJogadores(): Promise<Jogador[]> {
-    return await this.jogadoresService.consultarTodosJogadores();
+  async consultarJogadores(
+    @Query('email') email: string,
+  ): Promise<Jogador[] | Jogador> {
+    if (email) {
+      return await this.jogadoresService.consultarJogadorPeloEmail(email);
+    } else {
+      return await this.jogadoresService.consultarTodosJogadores();
+    }
   }
 }
