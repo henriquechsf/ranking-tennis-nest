@@ -1,0 +1,8 @@
+# Persistencia
+
+driver mongo Nest
+npm i @nestjs/mongoose mongoose
+
+adicionar MongooseModule.forRoot em app.module
+interface modelo herdar de Document do mongoose
+importar o schema no jogadorModule MongooseModule.forFeature
