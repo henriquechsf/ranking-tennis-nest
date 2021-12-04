@@ -6,3 +6,9 @@ npm i @nestjs/mongoose mongoose
 adicionar MongooseModule.forRoot em app.module
 interface modelo herdar de Document do mongoose
 importar o schema no jogadorModule MongooseModule.forFeature
+
+
+# Pipes - validação das requests
+
+npm i class-validator class-transformer
+adiciona as anotations no dto para validação
