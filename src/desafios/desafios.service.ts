@@ -83,4 +83,13 @@ export class DesafiosService {
     this.logger.log(`desafioCriado: ${JSON.stringify(desafioCriado)}`);
     return await desafioCriado.save();
   }
+
+  async consultarTodosDesafios(): Promise<Array<Desafio>> {
+    return await this.desafioModel
+      .find()
+      .populate('solicitante')
+      .populate('jogadores')
+      .populate('partida')
+      .exec();
+  }
 }
